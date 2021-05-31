@@ -21,6 +21,7 @@ def evaluate():
         global expr
         answr= str(eval(expr))
         equation.set(answr)
+        expr= ''
     except:
         equation.set('error')
         expr=''
