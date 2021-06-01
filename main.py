@@ -1,36 +1,69 @@
+# simple calculator in python
+# importing everything from tkinter module
 from tkinter import *
 import math
+
+# main GUI window
 root = Tk()
 
+# under name 'calculator'
 root.title('calculator')
 
+# creating a variable class
+equation = StringVar()
 
-
+# creating an entry box for showing expressions, and palcing it in root
 e = Entry(root, text= equation, width= 35, borderwidth= 5)
 e.grid(row= 0, column= 0, columnspan= 4)
 
+# globally declaring an expression and an equation variable
 expr= ''
+eq = ''
 
+# defining a function that activates
+# every button appropriately
 def ins_num(x):
     global expr
-    expr = expr+str(x)
-    equation.set(expr)
+    global eq
+    y = x
+    if len(str(x)) >1:
+        for char in y:
+            if char in "math.":
+                y = y.replace(char, "")
+    eq = eq + str(y)
+    equation.set(eq)
+    expr = expr + str(x)
 
+# defining a function that evaluates
+# the user-input expression
 def evaluate():
     try:
         global expr
         answr= str(eval(expr))
         equation.set(answr)
-        expr= ''
     except:
         equation.set('error')
         expr=''
 
+# defining a function that clears the entry box
 def clear():
     global expr
+    global eq
     expr= ''
-    equation.set(expr)
+    eq = ''
+    equation.set(eq)
 
+# defining a seperate function for tan(x)
+# since the evaluate() function doesnt handle it properly
+def tan(x):
+    global expr
+    global eq
+    y = 'tan('
+    eq = expr + y
+    equation.set(eq)
+    expr = expr+str(x)
+
+# creating all the buttons on the calculator
 b_1 = Button(root,text=1, fg='white', bg='black', width = 7,
              height = 4, command= lambda: ins_num(1) )
 b_2 = Button(root, text=2, fg='white', bg='black', width = 7,
@@ -73,13 +106,13 @@ b_rpar = Button(root, text = '(',fg='black', bg='light green', width = 7,
 b_lpar = Button(root, text = ')',fg='black', bg='light green', width = 7,
                 height = 4, command= lambda: ins_num(')') )
 b_factorial = Button(root, text = '!',fg='black', bg='light green', width = 7,
-                     height = 4, command=lambda: ins_num(' math.factorial( '))
+                     height = 4,)
 b_sin = Button(root, text = 'sin',fg='black', bg='light green', width = 7,
                height = 4, command= lambda: ins_num('math.sin(') )
 b_cos = Button(root, text = 'cos',fg='black', bg='light green', width = 7,
                height = 4, command= lambda: ins_num('math.cos(') )
 b_tan = Button(root, text = 'tan',fg='black', bg='light green', width = 7,
-               height = 4, command= lambda: ins_num('math.tan(') )
+               height = 4, command= lambda: tan('math.tan(') )
 b_expo = Button(root, text = 'e',fg='black', bg='light green', width = 7,
                 height = 4, command= lambda: ins_num('math.e') )
 b_log = Button(root, text = 'log',fg='black', bg='light green', width = 7,
@@ -89,9 +122,11 @@ b_ln = Button(root, text = 'ln',fg='black', bg='light green', width = 7,
 b_pi = Button(root, text = '兀',fg='black', bg='light green', width = 7,
               height = 4, command= lambda: ins_num('math.pi') )
 
-root.rowconfigure((0,1), weight=1)  # make buttons stretch when
-root.columnconfigure((0,2), weight=1)  # when window is resized
+# this is to stretch the widgets on the main window
+root.rowconfigure((0,1), weight=1)
+root.columnconfigure((0,2), weight=1)
 
+# placing all the widgets and organizing them on the screen
 b_1.grid(row= 6, column =0)
 b_2.grid(row= 6, column =1)
 b_3.grid(row= 6, column =2)
