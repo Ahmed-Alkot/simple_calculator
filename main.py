@@ -1,3 +1,4 @@
+from wolf_api import *
 # simple calculator in python
 # importing everything from tkinter module
 from tkinter import *
@@ -13,7 +14,7 @@ root.title('calculator')
 equation = StringVar()
 
 # creating an entry box for showing expressions, and palcing it in root
-e = Entry(root, text= equation, width= 35, borderwidth= 5)
+e = Entry(root, text=equation, width= 35, borderwidth= 5)
 e.grid(row= 0, column= 0, columnspan= 4)
 
 # globally declaring an expression and an equation variable
@@ -53,7 +54,7 @@ def clear():
     eq = ''
     equation.set(eq)
 
-# defining a seperate function for tan(x)
+# defining a separate function for tan(x)
 # since the evaluate() function doesnt handle it properly
 def tan(x):
     global expr
