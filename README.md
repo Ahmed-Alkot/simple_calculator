@@ -1,5 +1,5 @@
 # simple calculator
-CSCI 101: Introduction to programming course project. A simple arithmetic calculator with extra features like evaluating integrals, derivatives, 
+CSCI 101: Introduction to programming course project
 ------------------------------------------------
 
 This project utalizes WolframAlpha's computational knowledge engine.
