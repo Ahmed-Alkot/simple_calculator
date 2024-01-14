@@ -1,5 +1,5 @@
-# simple_calculator
-this res is for my first school project. it is a normal arithmetic calculator with extra features like evaluating integrals, derivatives, 
+# simple calculator
+CSCI 101: Introduction to programming course project. A simple arithmetic calculator with extra features like evaluating integrals, derivatives, 
 ------------------------------------------------
 
 this is a calculator that utalizes WolframAlpha's powerful computational knowledge engine.
